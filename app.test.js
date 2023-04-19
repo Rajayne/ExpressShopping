@@ -34,3 +34,13 @@ describe("POST /items", () => {
         expect(res.body).toEqual({added: doritos});
     });
 });
+
+let update = {"name": "popsicle", "price": "3.99"}
+
+describe("PATCH /items", () => {
+    test("Update an item", async () => {
+        const res = (await request(app).patch("/items/popsicle").send(update));
+        expect(res.statusCode).toBe(201)
+        expect(res.body).toEqual({updated: update});
+    });
+});
