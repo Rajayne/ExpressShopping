@@ -23,4 +23,10 @@ router.patch('/:name', (req,res) => {
     res.status(201).json({updated: item});
 })
 
+router.delete('/:name', (req,res) => {
+    const item = items.find(i => i.name === req.params.name)
+    items.splice(item, 1);
+    res.json({message: "Deleted"});
+})
+
 module.exports = router;

@@ -44,3 +44,11 @@ describe("PATCH /items", () => {
         expect(res.body).toEqual({updated: update});
     });
 });
+
+describe("DELETE /items/:name", () => {
+    test("Delete an item", async () => {
+        const res = (await request(app).delete("/items/popsicle"));
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toEqual({message: "Deleted"});
+    });
+});
